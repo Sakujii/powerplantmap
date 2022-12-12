@@ -1,0 +1,55 @@
+# Creating temporary table to load all the columns from the csv source file
+
+CREATE TEMPORARY TABLE t(
+id integer NOT NULL PRIMARY KEY,
+country varchar(3),
+country_long varchar(100),
+name varchar(100),
+gppd_idnr varchar(20),
+capacity_mw real,
+latitude double precision,
+longitude double precision,
+primary_fuel varchar(30),
+other_fuel1 varchar(30),
+other_fuel2 varchar(30),
+other_fuel3 varchar(30),
+commissioning_year real,
+owner varchar(255),
+source varchar(255),
+url text,
+geolocation_source varchar(255),
+wepp_id varchar(30),
+year_of_capacity_data  smallint,
+generation_gwh_2013 double precision,
+generation_gwh_2014 double precision,
+generation_gwh_2015 double precision,
+generation_gwh_2016 double precision,
+generation_gwh_2017 double precision,
+generation_gwh_2018 double precision,
+generation_gwh_2019 double precision,
+generation_data_source varchar(255),
+estimated_generation_gwh_2013 double precision,
+estimated_generation_gwh_2014 double precision,
+estimated_generation_gwh_2015 double precision,
+estimated_generation_gwh_2016 double precision,
+estimated_generation_gwh_2017 double precision,
+estimated_generation_gwh_2018 double precision,
+estimated_generation_gwh_2019 double precision);
+
+\copy t(id,country,country_long,name,gppd_idnr,capacity_mw,latitude,longitude,primary_fuel,other_fuel1,other_fuel2,other_fuel3,commissioning_year,owner,source,url,geolocation_source,wepp_id,year_of_capacity_data,generation_gwh_2013,generation_gwh_2014,generation_gwh_2015,generation_gwh_2016,generation_gwh_2017,generation_gwh_2018,generation_gwh_2019,generation_data_source,estimated_generation_gwh_2013,estimated_generation_gwh_2014,estimated_generation_gwh_2015,estimated_generation_gwh_2016,estimated_generation_gwh_2017) from 'C:\Users\Public\global_power_plant_database.csv' WITH DELIMITER ',' CSV HEADER;
+\copy continents(country,country:code, region continent) from 'C:\Users\Public\continents.csv' WITH DELIMITER ',' CSV HEADER;
+
+# Inserting data from temporary table to the real data tables
+
+INSERT INTO powerplants(id,country,country_long,name,gppd_idnr,capacity_mw,latitude,longitude,primary_fuel,other_fuel1,other_fuel2,other_fuel3,commissioning_year,owner,source,url,geolocation_source,wepp_id,year_of_capacity_data)
+SELECT id,country,country_long,name,gppd_idnr,capacity_mw,latitude,longitude,primary_fuel,other_fuel1,other_fuel2,other_fuel3,commissioning_year,owner,source,url,geolocation_source,wepp_id,year_of_capacity_data FROM t;
+
+INSERT INTO pp_generation(id,generation_gwh_2013,generation_gwh_2014,generation_gwh_2015,generation_gwh_2016,generation_gwh_2017,generation_gwh_2018,generation_gwh_2019,generation_data_source)
+SELECT id,generation_gwh_2013,generation_gwh_2014,generation_gwh_2015,generation_gwh_2016,generation_gwh_2017,generation_gwh_2018,generation_gwh_2019,generation_data_source FROM t;
+
+INSERT INTO pp_generation_est(id,est_gen_gwh_2013,est_gen_gwh_2014,est_gen_gwh_2015,est_gen_gwh_2016,est_gen_gwh_2017)
+SELECT id,estimated_generation_gwh_2013,estimated_generation_gwh_2014,estimated_generation_gwh_2015,estimated_generation_gwh_2016,estimated_generation_gwh_2017 FROM t;
+
+# Dropping temporary table
+
+DROP TABLE t;

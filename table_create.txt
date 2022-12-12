@@ -1,0 +1,45 @@
+CREATE TABLE powerplants(
+id integer NOT NULL PRIMARY KEY,
+country varchar(3),
+country_long varchar(100),
+name varchar(100),
+gppd_idnr varchar(20),
+capacity_mw real,
+latitude double precision,
+longitude double precision,
+primary_fuel varchar(30),
+other_fuel1 varchar(30),
+other_fuel2 varchar(30),
+other_fuel3 varchar(30),
+commissioning_year real,
+owner varchar(255),
+source varchar(255),
+url text,
+geolocation_source varchar(255),
+wepp_id varchar(30),
+year_of_capacity_data  smallint);
+
+CREATE TABLE pp_generation(
+id integer NOT NULL PRIMARY KEY,
+generation_gwh_2013 double precision,
+generation_gwh_2014 double precision,
+generation_gwh_2015 double precision,
+generation_gwh_2016 double precision,
+generation_gwh_2017 double precision,
+generation_gwh_2018 double precision,
+generation_gwh_2019 double precision,
+generation_data_source varchar(255));
+
+CREATE TABLE pp_generation_est(
+id integer NOT NULL PRIMARY KEY,
+est_gen_gwh_2013 double precision,
+est_gen_gwh_2014 double precision,
+est_gen_gwh_2015 double precision,
+est_gen_gwh_2016 double precision,
+est_gen_gwh_2017 double precision,
+est_gen_gwh_2018 double precision,
+est_gen_gwh_2019 double precision);
+
+CREATE TABLE continents (
+country varchar(50), 
+continent varchar(50));
