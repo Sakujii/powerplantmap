@@ -7,7 +7,6 @@ Oceania,ASM
 Europe,AND
 Africa,AGO
 North America,ATG
-Europe,AZE
 Asia,AZE
 South America,ARG
 Oceania,AUS
@@ -15,7 +14,6 @@ Europe,AUT
 North America,BHS
 Asia,BHR
 Asia,BGD
-Europe,ARM
 Asia,ARM
 North America,BRB
 Europe,BEL
@@ -58,7 +56,6 @@ North America,CRI
 Europe,HRV
 North America,CUB
 Europe,CYP
-Asia,CYP
 Europe,CZE
 Africa,BEN
 Europe,DNK
@@ -82,7 +79,6 @@ Oceania,PYF
 Antarctica,ATF
 Africa,DJI
 Africa,GAB
-Europe,GEO
 Asia,GEO
 Africa,GMB
 Asia,PSE
@@ -115,7 +111,6 @@ Europe,ITA
 Africa,CIV
 North America,JAM
 Asia,JPN
-Europe,KAZ
 Asia,KAZ
 Asia,JOR
 Africa,KEN
@@ -171,7 +166,6 @@ Oceania,NFK
 Europe,NOR
 Oceania,MNP
 Oceania,UMI
-North America,UMI
 Oceania,FSM
 Oceania,MHL
 Oceania,PLW
@@ -190,7 +184,6 @@ North America,PRI
 Asia,QAT
 Africa,REU
 Europe,ROU
-Europe,RUS
 Asia,RUS
 Africa,RWA
 North America,BLM
@@ -234,7 +227,6 @@ North America,TTO
 Asia,ARE
 Africa,TUN
 Europe,TUR
-Asia,TUR
 Asia,TKM
 North America,TCA
 Oceania,TUV
@@ -257,7 +249,4 @@ Oceania,WLF
 Oceania,WSM
 Asia,YEM
 Africa,ZMB
-Oceania,
-Asia,
-Asia,
-Asia,
+Europe,KOS

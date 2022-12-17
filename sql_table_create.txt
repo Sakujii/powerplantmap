@@ -41,5 +41,9 @@ est_gen_gwh_2018 double precision,
 est_gen_gwh_2019 double precision);
 
 CREATE TABLE continents (
-country varchar(50), 
+country varchar(3) NOT NULL PRIMARY KEY, 
 continent varchar(50));
+
+ALTER TABLE powerplants ADD CONSTRAINT pp_gen FOREIGN KEY(id) REFERENCES pp_generation(id);
+ALTER TABLE pp_generation ADD CONSTRAINT pp_est FOREIGN KEY(id) REFERENCES pp_generation_est(id);
+ALTER TABLE powerplants ADD CONSTRAINT pp_continents FOREIGN KEY(country) REFERENCES continents(country);

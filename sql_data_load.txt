@@ -37,7 +37,7 @@ estimated_generation_gwh_2018 double precision,
 estimated_generation_gwh_2019 double precision);
 
 \copy t(id,country,country_long,name,gppd_idnr,capacity_mw,latitude,longitude,primary_fuel,other_fuel1,other_fuel2,other_fuel3,commissioning_year,owner,source,url,geolocation_source,wepp_id,year_of_capacity_data,generation_gwh_2013,generation_gwh_2014,generation_gwh_2015,generation_gwh_2016,generation_gwh_2017,generation_gwh_2018,generation_gwh_2019,generation_data_source,estimated_generation_gwh_2013,estimated_generation_gwh_2014,estimated_generation_gwh_2015,estimated_generation_gwh_2016,estimated_generation_gwh_2017) from 'C:\Users\Public\global_power_plant_database.csv' WITH DELIMITER ',' CSV HEADER;
-\copy continents(country,country:code, region continent) from 'C:\Users\Public\continents.csv' WITH DELIMITER ',' CSV HEADER;
+\copy continents(continent, country) from 'C:\Users\Public\continents.csv' WITH DELIMITER ',' CSV HEADER;
 
 # Inserting data from temporary table to the real data tables
 
